@@ -334,6 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clip: {fileID: 8300000, guid: f6e57a0ea84e1d34895e4c2e5b28e32f, type: 3}
+  _coinSpawn: {fileID: 516025219}
 --- !u!82 &519420034
 AudioSource:
   m_ObjectHideFlags: 0

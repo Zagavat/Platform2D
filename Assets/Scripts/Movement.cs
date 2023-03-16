@@ -22,6 +22,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _jumpForce;
     [SerializeField] private UnityEvent _dead;
     [SerializeField] private AudioClip _clip;
+    [SerializeField] private LayerMask _enemies;
+    [SerializeField] private LayerMask _ground;
 
     private Rigidbody2D _rigidbody2D;
     private RaycastHit2D _bottomRay;
@@ -86,14 +88,14 @@ public class Movement : MonoBehaviour
 
     private bool MeetEnemy()
     {
-        _leftRay = Physics2D.Raycast(_rigidbody2D.position, Vector2.left, _sidesRayDistance, LayerMask.GetMask("Enemies"));
-        _rightRay = Physics2D.Raycast(_rigidbody2D.position, Vector2.right, _sidesRayDistance, LayerMask.GetMask("Enemies"));
+        _leftRay = Physics2D.Raycast(_rigidbody2D.position, Vector2.left, _sidesRayDistance, _enemies);
+        _rightRay = Physics2D.Raycast(_rigidbody2D.position, Vector2.right, _sidesRayDistance, _enemies);
         return _leftRay.collider != null || _rightRay.collider != null;
     }
 
     private bool StayOnGround()
     {
-        _bottomRay = Physics2D.Raycast(_rigidbody2D.position, Vector2.down, _downRayDistance, LayerMask.GetMask("Ground"));
+        _bottomRay = Physics2D.Raycast(_rigidbody2D.position, Vector2.down, _downRayDistance, _ground);
         return _bottomRay.collider != null;
     }
 }

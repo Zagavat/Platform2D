@@ -212,6 +212,12 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _clip: {fileID: 8300000, guid: 1d11aa291439d8b47957fe459ba6ca01, type: 3}
+  _enemies:
+    serializedVersion: 2
+    m_Bits: 64
+  _ground:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!82 &4283277892921063523
 AudioSource:
   m_ObjectHideFlags: 0

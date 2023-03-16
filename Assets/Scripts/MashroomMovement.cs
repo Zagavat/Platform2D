@@ -10,6 +10,8 @@ public class MashroomMovement : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private UnityEvent _marioOnHead;
     [SerializeField] private AudioClip _clip;
+    [SerializeField] private LayerMask _ground;
+    [SerializeField] private LayerMask _mario;
 
     private int _direction = 1;
     private float _sidesRayDistance;
@@ -31,9 +33,9 @@ public class MashroomMovement : MonoBehaviour
     private void Update()
     {
         transform.Translate(_speed * Time.deltaTime * _direction, 0, 0);
-        _sidesObstacle = Physics2D.Raycast(transform.position, new Vector2(_direction, 0), _sidesRayDistance, LayerMask.GetMask("Ground"));
-        _bottomObstacle = Physics2D.Raycast(transform.position, Vector2.down, _bottomRayDistance, LayerMask.GetMask("Ground"));
-        _topObstacle = Physics2D.Raycast(transform.position, Vector2.up, _bottomRayDistance, LayerMask.GetMask("Mario"));
+        _sidesObstacle = Physics2D.Raycast(transform.position, new Vector2(_direction, 0), _sidesRayDistance, _ground);
+        _bottomObstacle = Physics2D.Raycast(transform.position, Vector2.down, _bottomRayDistance, _ground);
+        _topObstacle = Physics2D.Raycast(transform.position, Vector2.up, _bottomRayDistance, _mario);
 
         if (_sidesObstacle.collider != null || _bottomObstacle.collider == null)
             _direction *= -1;

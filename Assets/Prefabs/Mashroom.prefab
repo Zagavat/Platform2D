@@ -120,6 +120,12 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _clip: {fileID: 8300000, guid: 55b4c178bd556c344bd6101a442aa1a7, type: 3}
+  _ground:
+    serializedVersion: 2
+    m_Bits: 8
+  _mario:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &-2409025973018975907
 MonoBehaviour:
   m_ObjectHideFlags: 0

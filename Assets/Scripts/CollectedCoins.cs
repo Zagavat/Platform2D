@@ -6,15 +6,14 @@ using UnityEngine;
 public class CollectedCoins : MonoBehaviour
 {
     [SerializeField] private AudioClip _clip;
+    [SerializeField] private CoinSpawn _coinSpawn;
 
     private int _score;
     private List<Coin> _coins;
-    private CoinSpawn _coinSpawn;
     private AudioSource _audioSource;
 
     private void Start()
     {
-        _coinSpawn = FindObjectOfType<CoinSpawn>();
         _coins = new List<Coin>();
 
         if (_coinSpawn != null)
@@ -36,7 +35,6 @@ public class CollectedCoins : MonoBehaviour
 
     private void AddSpawnedCoin(Coin coin)
     {
-        Debug.Log("Монетка родилась");
         _coins.Add(coin);
         coin.Collected += AddCollectedCoin;
     }

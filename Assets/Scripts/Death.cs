@@ -8,21 +8,15 @@ public class Death : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private bool _isBlinkInJob = true;
 
-    private void FixedUpdate()
-    {
-        if(_isBlinkInJob != true)
-            Destroy(this.gameObject);
-    }
-
     public void Dead()
     {
         TryGetComponent<SpriteRenderer>(out _spriteRenderer);
-        var blinkInJob = StartCoroutine(Blink());
+        StartCoroutine(Blink());
     }
 
     private IEnumerator Blink()
     {
-        float iterationStep = 0.05f;
+        float iterationStep = 0.08f;
         float direction = 0;
         int maxBlinks = 8;
         float alpha = _spriteRenderer.color.a;
@@ -43,5 +37,8 @@ public class Death : MonoBehaviour
         }
 
         _isBlinkInJob = false;
+
+        if (_isBlinkInJob != true)
+            Destroy(this.gameObject);
     }
 }
